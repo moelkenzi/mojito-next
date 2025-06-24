@@ -7,6 +7,9 @@ import Image from "next/image";
 
 const Hero = () => {
   useGSAP(() => {
+    // Register SplitText plugin
+    gsap.registerPlugin(SplitText);
+
     const heroSplit = new SplitText(".title", { type: "chars, words" });
     const paragraphsSplit = new SplitText(".subtitle", { type: "lines" });
 
@@ -33,14 +36,30 @@ const Hero = () => {
     <>
       <section id="hero" className="noisy">
         <h1 className="title">MOJITO</h1>
-        <Image src="/images/hero-left-leaf.png" height={326.25} width={326.25} alt="left-leaf" className="left-leaf" />
-        <Image
-          src="/images/hero-right-leaf.png"
-          height={326.25}
-          width={326.25}
-          alt="right-leaf"
-          className="right-leaf"
-        />
+
+        {/* Left Leaf */}
+        <div className="left-leaf">
+          <Image
+            src="/images/hero-left-leaf.png"
+            height={326.25}
+            width={326.25}
+            alt="left-leaf"
+            priority
+            style={{ objectFit: "contain", width: "100%", height: "auto" }}
+          />
+        </div>
+
+        {/* Right Leaf */}
+        <div className="right-leaf">
+          <Image
+            src="/images/hero-right-leaf.png"
+            height={326.25}
+            width={326.25}
+            alt="right-leaf"
+            priority
+            style={{ objectFit: "contain", width: "100%", height: "auto" }}
+          />
+        </div>
 
         <div className="body">
           {/* <img src="/images/arrow.png" alt="arrow" className="arrow" /> */}
